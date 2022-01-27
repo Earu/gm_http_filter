@@ -48,7 +48,7 @@ HTTPRequestHandle CreateHTTPRequest(void* inst, EHTTPMethod reqMethod, const cha
 
 	bool ret = MENU->GetType(-1) == (int)GarrysMod::Lua::Type::BOOL && MENU->GetBool(-1) == true;
 
-	MENU->Pop(2);
+	MENU->Pop(3);
 
 	if (ret) {
 		return INVALID_HTTPREQUEST_HANDLE;
