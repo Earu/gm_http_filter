@@ -63,7 +63,7 @@ GMOD_MODULE_OPEN()
 	HTTP = SteamHTTP(); 
 
 	hooker = new VTable(HTTP);
-	hooker->hook(CREATE_REQUEST_INDEX, &CreateHTTPRequest);
+	hooker->hook(CREATE_REQUEST_INDEX, (void*)&CreateHTTPRequest);
 
 	return 0;
 }
