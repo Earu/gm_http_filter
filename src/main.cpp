@@ -2,7 +2,11 @@
 #include <steam/isteamhttp.h>
 #include "vtable.h"
 
+#ifdef _WIN32
 #define CREATE_REQUEST_INDEX 0
+#else
+#define CREATE_REQUEST_INDEX 1
+#endif
 
 GarrysMod::Lua::ILuaBase* MENU = nullptr;
 ISteamHTTP* HTTP = nullptr;
