@@ -6,6 +6,7 @@
 #define CREATE_REQUEST_INDEX 0
 #else
 #define CREATE_REQUEST_INDEX 1
+#define __thiscall
 #endif
 
 GarrysMod::Lua::ILuaBase* MENU = nullptr;
