@@ -14,6 +14,8 @@
 #define SET_HEADER_VALUE_INDEX 4
 #define SEND_HTTP_REQUEST_INDEX 6
 #define SEND_HTTP_REQUEST_STREAM_INDEX 7
+
+#define __thiscall
 #endif
 
 GarrysMod::Lua::ILuaBase* MENU = nullptr;
