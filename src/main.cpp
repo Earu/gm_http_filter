@@ -4,10 +4,17 @@
 #include <map>
 #include <string>
 
+#ifdef _WIN32
 #define CREATE_REQUEST_INDEX 0
 #define SET_HEADER_VALUE_INDEX 3
 #define SEND_HTTP_REQUEST_INDEX 5
 #define SEND_HTTP_REQUEST_STREAM_INDEX 6
+#else
+#define CREATE_REQUEST_INDEX 1
+#define SET_HEADER_VALUE_INDEX 4
+#define SEND_HTTP_REQUEST_INDEX 6
+#define SEND_HTTP_REQUEST_STREAM_INDEX 7
+#endif
 
 GarrysMod::Lua::ILuaBase* MENU = nullptr;
 ISteamHTTP* HTTP = nullptr;
@@ -126,10 +133,10 @@ GMOD_MODULE_OPEN()
 	HTTP = SteamHTTP(); 
 
 	hooker = new VTable(HTTP);
-	hooker->hook(CREATE_REQUEST_INDEX, &CreateHTTPRequest);
-	hooker->hook(SET_HEADER_VALUE_INDEX, &SetHTTPHeaderValue);
-	hooker->hook(SEND_HTTP_REQUEST_INDEX, &SendHTTPRequest);
-	hooker->hook(SEND_HTTP_REQUEST_STREAM_INDEX, &SendHTTPRequestStream);
+	hooker->hook(CREATE_REQUEST_INDEX, (void*)&CreateHTTPRequest);
+	hooker->hook(SET_HEADER_VALUE_INDEX, (void*)&SetHTTPHeaderValue);
+	hooker->hook(SEND_HTTP_REQUEST_INDEX, (void*)&SendHTTPRequest);
+	hooker->hook(SEND_HTTP_REQUEST_STREAM_INDEX, (void*)&SendHTTPRequestStream);
 
 	return 0;
 }
